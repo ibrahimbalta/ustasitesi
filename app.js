@@ -81,8 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const demoPanel = document.getElementById("demo-panel-el");
   const demoToggle = document.getElementById("demo-toggle-btn-el");
   const demoClose = document.getElementById("demo-close-btn");
-  const demoTabs = document.querySelectorAll(".demo-tab-btn");
-  const demoTabContents = document.querySelectorAll(".demo-tab-content");
+
   
   const editName = document.getElementById("edit-name");
   const editSurname = document.getElementById("edit-surname");
@@ -537,17 +536,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Dev tab switches
-  demoTabs.forEach(btn => {
-    btn.addEventListener("click", () => {
-      demoTabs.forEach(b => b.classList.remove("active"));
-      demoTabContents.forEach(tc => tc.classList.remove("active"));
-      
-      btn.classList.add("active");
-      const targetTab = btn.getAttribute("data-tab");
-      document.getElementById(targetTab).classList.add("active");
-    });
-  });
+
 
   // Sync editor inputs with loaded template values
   function syncDemoFormWithTemplate(template) {
