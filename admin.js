@@ -125,10 +125,10 @@ document.addEventListener("DOMContentLoaded", () => {
       
       if (enteredPassword === storedPassword) {
         sessionStorage.setItem("admin_authenticated", "true");
-        loginErrorAlert.classList.remove("danger");
+        loginErrorAlert.classList.remove("show");
         checkAuth();
       } else {
-        loginErrorAlert.classList.add("danger");
+        loginErrorAlert.classList.add("show");
         adminPasswordInput.value = "";
       }
     });

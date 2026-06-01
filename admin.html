@@ -13,47 +13,341 @@
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-  <!-- Styles -->
-  <link rel="stylesheet" href="style.css">
+  <!-- Main Styles -->
+  <link rel="stylesheet" href="style.css?v=1.3">
+
+  <!-- Critical Admin Login Styles (inline to guarantee they always load) -->
+  <style>
+    /* Reset and force layout for admin page */
+    html, body.admin-body {
+      margin: 0 !important;
+      padding: 0 !important;
+      min-height: 100vh !important;
+      width: 100% !important;
+      background-color: #0f172a !important;
+      color: #e2e8f0;
+      font-family: 'Outfit', 'Inter', sans-serif;
+      box-sizing: border-box;
+    }
+
+    body.admin-body {
+      display: flex !important;
+      flex-direction: column !important;
+    }
+
+    /* Login Wrapper: full screen flex centering */
+    .login-wrapper {
+      flex: 1 1 auto !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 20px !important;
+      min-height: 100vh !important;
+      position: relative;
+      background: radial-gradient(ellipse at 50% 40%, rgba(2, 132, 199, 0.12) 0%, #0f172a 65%);
+      overflow: hidden;
+    }
+
+    .login-wrapper::before {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      background: #0284c7;
+      filter: blur(150px);
+      opacity: 0.10;
+      border-radius: 50%;
+      top: 30%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Login Card: glassmorphism card centered */
+    .login-card {
+      position: relative;
+      z-index: 1;
+      background: rgba(30, 41, 59, 0.80) !important;
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.10) !important;
+      border-radius: 24px !important;
+      padding: 44px 36px 36px 36px !important;
+      width: 100% !important;
+      max-width: 420px !important;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.35), 0 0 24px rgba(2,132,199,0.10);
+      text-align: center !important;
+      margin: 0 auto !important;
+      transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+      animation: loginCardIn 0.6s ease-out;
+    }
+
+    @keyframes loginCardIn {
+      from { opacity: 0; transform: translateY(30px) scale(0.97); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .login-card:hover {
+      border-color: rgba(2, 132, 199, 0.25) !important;
+      box-shadow: 0 28px 70px rgba(0,0,0,0.4), 0 0 36px rgba(2,132,199,0.18);
+      transform: translateY(-3px);
+    }
+
+    .login-card h2 {
+      font-size: 1.7rem;
+      margin: 0 0 6px 0;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .login-card .login-subtitle {
+      font-size: 0.9rem;
+      color: #94a3b8;
+      margin: 0 0 28px 0;
+      line-height: 1.5;
+    }
+
+    /* Logo Circle */
+    .login-logo-icon {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: rgba(2, 132, 199, 0.12);
+      border: 2px solid rgba(2, 132, 199, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px auto;
+      color: #0284c7;
+      font-size: 26px;
+      box-shadow: 0 0 24px rgba(2, 132, 199, 0.12);
+      transition: all 0.3s ease;
+    }
+
+    .login-logo-icon:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 36px rgba(2, 132, 199, 0.22);
+    }
+
+    /* Badge */
+    .login-card .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(2, 132, 199, 0.12);
+      color: #0284c7;
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: 1px solid rgba(2, 132, 199, 0.25);
+      margin-bottom: 18px;
+    }
+
+    /* Form Controls */
+    .login-card .form-group-admin {
+      margin-bottom: 16px;
+      text-align: left;
+    }
+
+    .login-card .form-group-admin label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #cbd5e1;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .login-card .form-control-admin {
+      width: 100%;
+      background-color: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      border-radius: 12px;
+      color: #ffffff;
+      padding: 13px 16px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      transition: all 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    .login-card .form-control-admin:focus {
+      outline: none;
+      border-color: #0284c7;
+      box-shadow: 0 0 12px rgba(2, 132, 199, 0.25);
+    }
+
+    /* Submit Button */
+    .login-card .btn-login-submit {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 15px 24px;
+      background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 100%);
+      color: #ffffff;
+      border: none;
+      border-radius: 14px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 22px;
+      box-shadow: 0 6px 20px rgba(2, 132, 199, 0.25);
+    }
+
+    .login-card .btn-login-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(2, 132, 199, 0.35);
+      background: linear-gradient(135deg, #0369a1 0%, #0284c7 100%);
+    }
+
+    /* Back Link */
+    .login-card .login-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 28px;
+      font-size: 0.88rem;
+      color: #64748b;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .login-card .login-back-link:hover {
+      color: #0284c7;
+    }
+
+    /* Password hint */
+    .login-hint {
+      font-size: 0.73rem;
+      color: #64748b;
+      margin-top: 7px;
+      display: block;
+    }
+
+    .login-hint strong {
+      color: #94a3b8;
+    }
+
+    /* Toggle password button */
+    .pw-toggle-btn {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #64748b;
+      cursor: pointer;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      font-size: 1rem;
+      transition: color 0.2s;
+    }
+
+    .pw-toggle-btn:hover {
+      color: #e2e8f0;
+    }
+
+    /* Error alert */
+    .login-card .login-error-box {
+      display: none;
+      padding: 12px 16px;
+      border-radius: 10px;
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.20);
+      color: #f87171;
+      font-size: 0.88rem;
+      font-weight: 500;
+      margin-bottom: 20px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .login-card .login-error-box.show {
+      display: block;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 480px) {
+      .login-card {
+        padding: 32px 22px 28px 22px !important;
+        border-radius: 18px !important;
+        max-width: 100% !important;
+      }
+
+      .login-card h2 {
+        font-size: 1.4rem;
+      }
+
+      .login-logo-icon {
+        width: 58px;
+        height: 58px;
+        font-size: 22px;
+      }
+
+      .login-card .btn-login-submit {
+        padding: 14px 20px;
+        font-size: 0.95rem;
+      }
+
+      .login-wrapper {
+        padding: 16px !important;
+      }
+    }
+  </style>
 </head>
-<body class="admin-body dark-theme" style="margin:0; padding:0;">
+<body class="admin-body dark-theme">
 
   <!-- LOGIN CONTAINER -->
   <div class="login-wrapper" id="login-screen">
     <div class="login-card" id="login-card">
-      <div class="login-logo-circle" style="width: 70px; height: 70px; border-radius: 50%; background: rgba(var(--primary-color-rgb), 0.15); border: 2px solid rgba(var(--primary-color-rgb), 0.3); display: inline-flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; color: var(--primary-color); font-size: 28px; box-shadow: 0 0 20px rgba(var(--primary-color-rgb), 0.15); transition: var(--transition-smooth);">
+
+      <div class="login-logo-icon">
         <i class="fa-solid fa-screwdriver-wrench"></i>
       </div>
+
       <div class="badge">
         <i class="fa-solid fa-lock"></i> Güvenli Giriş
       </div>
-      <h2 style="margin-top: 10px; font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.85rem; letter-spacing: -0.02em;">
-        Usta <span style="background: linear-gradient(135deg, var(--primary-color) 0%, #38bdf8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Yönetim Paneli</span>
+
+      <h2>
+        Usta <span style="background: linear-gradient(135deg, #0284c7 0%, #38bdf8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Yönetim Paneli</span>
       </h2>
-      <p style="margin-top: 8px;">Lütfen web sitenizi düzenlemek için şifrenizi girin.</p>
-      
-      <div class="admin-alert" id="login-error-alert">Hatalı şifre girdiniz!</div>
-      
+      <p class="login-subtitle">Lütfen web sitenizi düzenlemek için şifrenizi girin.</p>
+
+      <div class="login-error-box" id="login-error-alert">
+        <i class="fa-solid fa-circle-exclamation"></i> Hatalı şifre girdiniz!
+      </div>
+
       <form id="login-form" onsubmit="event.preventDefault();">
-        <div class="form-group-admin" style="text-align: left;">
+        <div class="form-group-admin">
           <label for="admin-password">Yönetici Şifresi</label>
           <div style="position: relative;">
             <input type="password" id="admin-password" class="form-control-admin" placeholder="••••••••" required style="padding-right: 46px;">
-            <button type="button" id="toggle-password" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #94a3b8; cursor: pointer; padding: 4px; display: flex; align-items: center; justify-content: center; transition: color 0.2s;" title="Şifreyi Göster">
+            <button type="button" id="toggle-password" class="pw-toggle-btn" title="Şifreyi Göster">
               <i class="fa-solid fa-eye" id="toggle-password-icon"></i>
             </button>
           </div>
-          <span style="font-size: 0.75rem; color: #94a3b8; margin-top: 8px; display: block;">Varsayılan demo şifresi: <strong>admin123</strong></span>
+          <span class="login-hint">Varsayılan demo şifresi: <strong>admin123</strong></span>
         </div>
-        
-        <button type="submit" id="btn-login" class="btn btn-primary btn-block btn-lg" style="margin-top: 24px;">
+
+        <button type="submit" id="btn-login" class="btn-login-submit">
           <i class="fa-solid fa-arrow-right-to-bracket"></i> Giriş Yap
         </button>
       </form>
-      
-      <div style="margin-top: 30px;">
-        <a href="index.html" style="font-size: 0.9rem; color: var(--primary-color); font-weight: 600;"><i class="fa-solid fa-arrow-left"></i> Siteye Geri Dön</a>
-      </div>
+
+      <a href="index.html" class="login-back-link">
+        <i class="fa-solid fa-arrow-left"></i> Siteye Geri Dön
+      </a>
+
     </div>
   </div>
 
