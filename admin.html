@@ -16,23 +16,33 @@
   <!-- Styles -->
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="admin-body dark-theme">
+<body class="admin-body dark-theme" style="margin:0; padding:0;">
 
   <!-- LOGIN CONTAINER -->
   <div class="login-wrapper" id="login-screen">
-    <div class="login-card">
+    <div class="login-card" id="login-card">
+      <div class="login-logo-circle" style="width: 70px; height: 70px; border-radius: 50%; background: rgba(var(--primary-color-rgb), 0.15); border: 2px solid rgba(var(--primary-color-rgb), 0.3); display: inline-flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; color: var(--primary-color); font-size: 28px; box-shadow: 0 0 20px rgba(var(--primary-color-rgb), 0.15); transition: var(--transition-smooth);">
+        <i class="fa-solid fa-screwdriver-wrench"></i>
+      </div>
       <div class="badge">
         <i class="fa-solid fa-lock"></i> Güvenli Giriş
       </div>
-      <h2 style="margin-top: 15px;">Usta Yönetim Paneli</h2>
-      <p>Lütfen web sitenizi düzenlemek için şifrenizi girin.</p>
+      <h2 style="margin-top: 10px; font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.85rem; letter-spacing: -0.02em;">
+        Usta <span style="background: linear-gradient(135deg, var(--primary-color) 0%, #38bdf8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Yönetim Paneli</span>
+      </h2>
+      <p style="margin-top: 8px;">Lütfen web sitenizi düzenlemek için şifrenizi girin.</p>
       
-      <div class="admin-alert danger" id="login-error-alert">Hatalı şifre girdiniz!</div>
+      <div class="admin-alert" id="login-error-alert">Hatalı şifre girdiniz!</div>
       
       <form id="login-form" onsubmit="event.preventDefault();">
         <div class="form-group-admin" style="text-align: left;">
           <label for="admin-password">Yönetici Şifresi</label>
-          <input type="password" id="admin-password" class="form-control-admin" placeholder="••••••••" required>
+          <div style="position: relative;">
+            <input type="password" id="admin-password" class="form-control-admin" placeholder="••••••••" required style="padding-right: 46px;">
+            <button type="button" id="toggle-password" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #94a3b8; cursor: pointer; padding: 4px; display: flex; align-items: center; justify-content: center; transition: color 0.2s;" title="Şifreyi Göster">
+              <i class="fa-solid fa-eye" id="toggle-password-icon"></i>
+            </button>
+          </div>
           <span style="font-size: 0.75rem; color: #94a3b8; margin-top: 8px; display: block;">Varsayılan demo şifresi: <strong>admin123</strong></span>
         </div>
         
@@ -42,7 +52,7 @@
       </form>
       
       <div style="margin-top: 30px;">
-        <a href="index.html" style="font-size: 0.9rem; color: #3b82f6;"><i class="fa-solid fa-arrow-left"></i> Siteye Geri Dön</a>
+        <a href="index.html" style="font-size: 0.9rem; color: var(--primary-color); font-weight: 600;"><i class="fa-solid fa-arrow-left"></i> Siteye Geri Dön</a>
       </div>
     </div>
   </div>
@@ -104,8 +114,8 @@
         <!-- Content Area -->
         <section class="admin-content-area">
           
-          <div class="admin-alert success" id="admin-success-alert">Değişiklikler başarıyla kaydedildi!</div>
-          <div class="admin-alert danger" id="admin-error-alert">Lütfen gerekli tüm alanları doldurun.</div>
+          <div class="admin-alert success" id="admin-success-alert" style="display: none;">Değişiklikler başarıyla kaydedildi!</div>
+          <div class="admin-alert danger" id="admin-error-alert" style="display: none;">Lütfen gerekli tüm alanları doldurun.</div>
 
           <!-- Section 1: Profil Bilgileri -->
           <div class="admin-section active" id="sec-profile">
@@ -203,7 +213,7 @@
 
             <div style="display:flex; justify-content:space-between; align-items:center; margin: 30px 0 20px 0;">
               <h4 style="margin:0;">Ek Seçenekler & Fiyatları (Checkboxes)</h4>
-              <button id="btn-add-option" class="btn btn-secondary btn-sm" style="border-color: rgba(59,130,246,0.3); color:#3b82f6;">
+              <button id="btn-add-option" class="btn btn-secondary btn-sm" style="border-color: rgba(var(--primary-color-rgb), 0.3); color: var(--primary-color);">
                 <i class="fa-solid fa-plus"></i> Ek Seçenek Ekle
               </button>
             </div>
