@@ -1,0 +1,22 @@
+{
+  "name": "usta-kisisel-web-sitesi",
+  "version": "1.0.0",
+  "description": "Ustalara satılmak üzere tasarlanmış canlı düzenleme panelli kişisel web sitesi demosu.",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx http-server -p 3000"
+  },
+  "keywords": [
+    "usta",
+    "fayans",
+    "seramik",
+    "tadilat",
+    "insaat",
+    "boya",
+    "tesisat",
+    "portfolio",
+    "landing-page"
+  ],
+  "author": "UstaBul",
+  "license": "ISC"
+}

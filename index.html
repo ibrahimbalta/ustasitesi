@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="meta-title">Murat Usta | Seramik & Fayans Uzmanı</title>
+  <meta name="description" id="meta-desc" content="Deneyimli seramik ve fayans ustası. Milimetrik işçilik, kaliteli malzeme ve anahtar teslim banyo, mutfak yenileme hizmetleri. Teklif almak için hemen arayın!">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Styling -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+
+  <!-- Header / Navigation -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="logo">
+        <i class="fa-solid fa-wrench logo-icon" id="logo-icon-el"></i>
+        <span class="logo-text" id="logo-text-el">Murat Usta</span>
+      </a>
+      
+      <nav class="nav-menu" id="nav-menu-el">
+        <a href="#hero" class="nav-link active">Giriş</a>
+        <a href="#about" class="nav-link">Hakkımda</a>
+        <a href="#services" class="nav-link">Hizmetler</a>
+        <a href="#before-after" class="nav-link">Öncesi/Sonrası</a>
+        <a href="#gallery" class="nav-link">Portfolyo</a>
+        <a href="#calculator" class="nav-link">Teklif Hesapla</a>
+        <a href="#testimonials" class="nav-link">Yorumlar</a>
+        <a href="#contact" class="nav-link">İletişim</a>
+      </nav>
+      
+      <div class="nav-actions">
+        <a href="tel:05321234567" class="btn btn-primary btn-nav call-btn-el">
+          <i class="fa-solid fa-phone"></i> <span class="phone-text-el">0532 123 45 67</span>
+        </a>
+        <button class="mobile-menu-toggle" id="menu-toggle-el" aria-label="Menü">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero-section">
+    <div class="hero-bg-overlay"></div>
+    <div class="container hero-container">
+      <div class="hero-content">
+        <div class="badge" id="hero-badge-el">
+          <i class="fa-solid fa-certificate"></i> <span id="hero-experience-el">14</span> Yıllık Mesleki Tecrübe
+        </div>
+        <h1 id="hero-title-el">Milimetrik İşçilik, Kusursuz Zeminler</h1>
+        <p class="lead" id="hero-subtitle-el">14 yılı aşkın süredir banyo, mutfak, teras ve zeminlerinizde seramik, fayans, granit ve mermer kaplama işlerini titizlikle yapıyorum.</p>
+        
+        <div class="hero-actions">
+          <a href="tel:05321234567" class="btn btn-primary btn-lg call-btn-el">
+            <i class="fa-solid fa-phone-volume"></i> Hemen Ara
+          </a>
+          <a href="https://wa.me/905321234567" target="_blank" class="btn btn-success btn-lg whatsapp-btn-el">
+            <i class="fa-brands fa-whatsapp"></i> WhatsApp'tan Yaz
+          </a>
+        </div>
+        
+        <div class="hero-features">
+          <div class="hero-feat-item">
+            <i class="fa-solid fa-check"></i> <span>Zamanında Teslim</span>
+          </div>
+          <div class="hero-feat-item">
+            <i class="fa-solid fa-check"></i> <span>Temiz İşçilik Garantisi</span>
+          </div>
+          <div class="hero-feat-item">
+            <i class="fa-solid fa-check"></i> <span>Ücretsiz Keşif İmkanı</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="hero-image-wrapper">
+        <div class="image-accent-glow"></div>
+        <div class="hero-image-card">
+          <img src="assets/usta-avatar.jpg" alt="Usta" id="hero-avatar-el" class="hero-avatar">
+          <div class="floating-badge">
+            <i class="fa-solid fa-star text-warning"></i>
+            <div>
+              <h4 id="hero-rating-val">4.9</h4>
+              <p>Müşteri Puanı</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="container stats-container">
+      <div class="stat-card">
+        <h3 id="stat-experience">14+</h3>
+        <p>Yıllık Tecrübe</p>
+      </div>
+      <div class="stat-card">
+        <h3 id="stat-projects">380+</h3>
+        <p>Bitirilen Proje</p>
+      </div>
+      <div class="stat-card">
+        <h3 id="stat-customers">400+</h3>
+        <p>Mutlu Müşteri</p>
+      </div>
+      <div class="stat-card">
+        <h3 id="stat-rating">4.9 / 5</h3>
+        <p>Kullanıcı Puanı</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about-section section-padding">
+    <div class="container about-container">
+      <div class="about-images">
+        <div class="about-image-main">
+          <img src="assets/about-main.jpg" id="about-img-el" alt="Çalışma Anı">
+        </div>
+        <div class="experience-card">
+          <span class="exp-num" id="about-exp-num">14</span>
+          <span class="exp-text">Yıl Sektör<br>Deneyimi</span>
+        </div>
+      </div>
+      
+      <div class="about-content">
+        <div class="section-header">
+          <span class="subtitle">BEN KİMİM?</span>
+          <h2>Hakkımda & İş Felsefem</h2>
+        </div>
+        <p id="about-text-el">14 yılı aşkın süredir banyo, mutfak, teras ve zeminlerinizde seramik, fayans, granit ve mermer kaplama işlerini titizlikle yapıyorum. 'Önce kalite ve milimetrik doğruluk' prensibiyle, her projeyi kendi evim gibi özenle işliyorum. Lazer hizalama teknolojisi ve birinci sınıf yapıştırıcı malzemeler kullanarak uzun ömürlü ve estetik alanlar yaratıyorum.</p>
+        
+        <div class="about-bullet-grid">
+          <div class="bullet-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <div>
+              <h4>Planlı ve Sözleşmeli Çalışma</h4>
+              <p>İşe başlamadan önce yapılacakları netleştirir, anlaşılan günde teslim ederim.</p>
+            </div>
+          </div>
+          <div class="bullet-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <div>
+              <h4>Lazer Teknolojili Hizalama</h4>
+              <p>Çarpık, dalgalı zeminlere son! Milimetrik lazer hizalama ile kusursuz görünümler.</p>
+            </div>
+          </div>
+          <div class="bullet-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <div>
+              <h4>Temiz ve Düzenli Teslimat</h4>
+              <p>Çalışırken evinizi en az düzeyde kirletir, iş bitimi molozları temizleyip teslim ederim.</p>
+            </div>
+          </div>
+          <div class="bullet-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <div>
+              <h4>Sertifikalı Malzeme Kullanımı</h4>
+              <p>Su sızdırmazlık yalıtımları ve yapıştırıcı sınıflarında en kaliteli markaları tercih ederim.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="services-section section-padding bg-alt">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="subtitle">NELER YAPIYORUM?</span>
+        <h2>Uzmanlık Alanlarım & Hizmetlerim</h2>
+        <p class="header-desc">Evinizin tüm yenileme ve tadilat işlerinde profesyonel, garantili ve modern çözümler sunuyorum.</p>
+      </div>
+      
+      <div class="services-grid" id="services-grid-el">
+        <!-- Dynmically loaded from JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Before / After Section -->
+  <section id="before-after" class="before-after-section section-padding">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="subtitle">İŞ KALİTEMİZ</span>
+        <h2 id="ba-section-title">Öncesi & Sonrası Karşılaştırma</h2>
+        <p class="header-desc" id="ba-section-desc">Eski ve hasarlı alanları nasıl modernize ettiğimizi interaktif kaydırıcı ile yakından inceleyin. Çizgiyi sağa sola kaydırın!</p>
+      </div>
+      
+      <div class="ba-card">
+        <div class="ba-slider-container" id="ba-slider-el">
+          <div class="ba-img-container ba-before-container">
+            <img src="assets/seramik-before.jpg" alt="Öncesi" id="ba-img-before">
+            <span class="ba-label label-before" id="ba-label-before-text">Eski & Harabe Hali</span>
+          </div>
+          
+          <div class="ba-img-container ba-after-container" id="ba-after-container-el">
+            <img src="assets/seramik-after.jpg" alt="Sonrası" id="ba-img-after">
+            <span class="ba-label label-after" id="ba-label-after-text">Murat Usta Dokunuşu</span>
+          </div>
+          
+          <div class="ba-handle" id="ba-handle-el">
+            <div class="ba-handle-line"></div>
+            <div class="ba-handle-button">
+              <i class="fa-solid fa-arrows-left-right"></i>
+            </div>
+            <div class="ba-handle-line"></div>
+          </div>
+        </div>
+        <div class="ba-card-info text-center">
+          <h3 id="ba-project-title">Banyo Yenileme Projesi</h3>
+          <p id="ba-project-desc">20 yıllık eski banyonun tamamen sökülerek su yalıtımlı modern granit kaplamaya dönüştürülmesi çalışmamız.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="gallery-section section-padding bg-alt">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="subtitle">PORTFOLYO</span>
+        <h2>Referans Projelerim & Galeri</h2>
+        <p class="header-desc">Şimdiye kadar tamamladığım, gurur duyduğum projelerden bazı örnekler.</p>
+      </div>
+      
+      <div class="gallery-filter-buttons" id="gallery-filters-el">
+        <button class="filter-btn active" data-filter="all">Tümü</button>
+        <!-- Categories will dynamically load here -->
+      </div>
+      
+      <div class="gallery-grid" id="gallery-grid-el">
+        <!-- Dynamically loaded from JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Price Calculator Section -->
+  <section id="calculator" class="calculator-section section-padding">
+    <div class="container calc-container">
+      <div class="calc-info">
+        <div class="section-header">
+          <span class="subtitle">BÜTÇENİZİ PLANLAYIN</span>
+          <h2>Akıllı Fiyat Teklifi Hesaplama</h2>
+          <p>Yaptırmak istediğiniz işin tahmini maliyetini saniyeler içinde hesaplayın. İhtiyacınız olan hizmeti seçip ölçüleri girmeniz yeterlidir.</p>
+        </div>
+        
+        <ul class="calc-benefits">
+          <li><i class="fa-solid fa-check"></i> Sürpriz maliyetler olmadan tahmini işçilik fiyatı.</li>
+          <li><i class="fa-solid fa-check"></i> E-posta veya telefon araması beklemeden anında sonuç.</li>
+          <li><i class="fa-solid fa-check"></i> Hesapladığınız fiyat listesini doğrudan WhatsApp üzerinden ustaya yollama kolaylığı.</li>
+        </ul>
+        
+        <div class="calc-note">
+          <i class="fa-solid fa-circle-info"></i>
+          <p><strong>Not:</strong> Hesaplanan tutar kaba bir işçilik tahminidir. Malzeme kalitesi, zemin durumu ve yerinde keşfe bağlı olarak değişiklik gösterebilir.</p>
+        </div>
+      </div>
+      
+      <div class="calc-card">
+        <h3>Fiyat Tahmin Aracı</h3>
+        
+        <div class="form-group">
+          <label for="calc-service">Hizmet Türü Seçin</label>
+          <select id="calc-service" class="form-control">
+            <!-- Dynamically populated -->
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="calc-quantity" id="calc-qty-label">Yaklaşık Alan (m²)</label>
+          <div class="input-with-unit">
+            <input type="number" id="calc-quantity" class="form-control" value="10" min="1">
+            <span class="input-unit" id="calc-unit-span">m²</span>
+          </div>
+        </div>
+
+        <div class="calc-checkboxes" id="calc-extras-el">
+          <!-- Dynamically populated checkbox options -->
+        </div>
+        
+        <div class="calc-result-area">
+          <div class="result-row">
+            <span>Seçilen Hizmet:</span>
+            <strong id="res-service-name">-</strong>
+          </div>
+          <div class="result-row">
+            <span>Birim Fiyat:</span>
+            <strong id="res-unit-price">0 TL</strong>
+          </div>
+          <div class="result-row border-top">
+            <span class="total-label">Tahmini Toplam Tutar:</span>
+            <strong class="total-val" id="res-total-price">0 TL</strong>
+          </div>
+        </div>
+        
+        <button id="calc-whatsapp-send" class="btn btn-success btn-block btn-lg">
+          <i class="fa-brands fa-whatsapp"></i> Bu Teklifi WhatsApp'la Gönder
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="testimonials-section section-padding bg-alt">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="subtitle">MÜŞTERİ YORUMLARI</span>
+        <h2>Hakkımda Ne Dediler?</h2>
+        <p class="header-desc">Hizmet alan müşterilerimizin memnuniyetini kendi kelimelerinden okuyun.</p>
+      </div>
+      
+      <div class="testimonials-grid" id="testimonials-grid-el">
+        <!-- Dynamically loaded from JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section section-padding">
+    <div class="container contact-container">
+      <div class="contact-card-info">
+        <div class="section-header">
+          <span class="subtitle">İLETİŞİM</span>
+          <h2>Hemen İletişime Geçin</h2>
+          <p>Evinizdeki tadilat ve yenileme projeleri için ücretsiz keşif talebinde bulunabilir, aklınıza takılan soruları sorabilirsiniz.</p>
+        </div>
+        
+        <div class="contact-info-list">
+          <div class="contact-info-item">
+            <div class="info-icon">
+              <i class="fa-solid fa-phone"></i>
+            </div>
+            <div>
+              <p class="info-label">Telefon Numarası</p>
+              <a href="tel:05321234567" class="info-value call-btn-el phone-text-el">0532 123 45 67</a>
+            </div>
+          </div>
+          
+          <div class="contact-info-item">
+            <div class="info-icon">
+              <i class="fa-brands fa-whatsapp"></i>
+            </div>
+            <div>
+              <p class="info-label">7/24 Hızlı WhatsApp Destek</p>
+              <a href="https://wa.me/905321234567" target="_blank" class="info-value whatsapp-btn-el phone-text-el">0532 123 45 67</a>
+            </div>
+          </div>
+          
+          <div class="contact-info-item">
+            <div class="info-icon">
+              <i class="fa-solid fa-envelope"></i>
+            </div>
+            <div>
+              <p class="info-label">E-Posta Adresi</p>
+              <a href="mailto:murat.usta@ustam.com" class="info-value mail-el" id="email-text-el">murat.usta@ustam.com</a>
+            </div>
+          </div>
+          
+          <div class="contact-info-item">
+            <div class="info-icon">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div>
+              <p class="info-label">Hizmet Bölgeleri</p>
+              <p class="info-value" id="service-areas-el">Tüm İstanbul (Anadolu & Avrupa Yakası)</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="social-links">
+          <a href="#" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-icon" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#" class="social-icon" aria-label="Youtube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+      
+      <div class="contact-card-form">
+        <h3>Ücretsiz Keşif & Detaylı Bilgi Formu</h3>
+        <form id="contact-form-el" action="#" method="POST" onsubmit="event.preventDefault(); alert('Mesajınız başarıyla gönderildi! En kısa sürede geri dönüş yapılacaktır.');">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="contact-name">Adınız Soyadınız</label>
+              <input type="text" id="contact-name" class="form-control" placeholder="Örn: Ahmet Yılmaz" required>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="contact-phone">Telefon Numaranız</label>
+              <input type="tel" id="contact-phone" class="form-control" placeholder="Örn: 0532 111 22 33" required>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="contact-service">İstediğiniz Hizmet</label>
+            <select id="contact-service-select" class="form-control">
+              <!-- Loaded dynamically -->
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="contact-message">Mesajınız / Proje Detayları</label>
+            <textarea id="contact-message" class="form-control" rows="4" placeholder="Yapılacak yerin ölçüleri, istediğiniz malzeme türü ve özel isteklerinizi yazabilirsiniz..." required></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-primary btn-block btn-lg">
+            <i class="fa-solid fa-paper-plane"></i> Formu Gönder (Ücretsiz Keşif)
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container footer-container">
+      <p>&copy; <span id="footer-year">2026</span> <strong id="footer-name-el">Murat Usta</strong>. Tüm Hakları Saklıdır.</p>
+      <p class="developer-tag">Bu Web Sitesi <strong id="dev-tag-company">UstaBul</strong> Altyapısıyla Kurulmuştur.</p>
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal for Gallery -->
+  <div class="lightbox" id="lightbox-modal">
+    <button class="lightbox-close" id="lightbox-close-btn">&times;</button>
+    <div class="lightbox-content">
+      <img src="" alt="Büyütülmüş Portfolyo Resmi" id="lightbox-img">
+      <div class="lightbox-caption" id="lightbox-caption-el">Proje Detayı</div>
+    </div>
+  </div>
+
+  <!-- FLOATING DEVELOPER DEMO PANEL -->
+  <div class="demo-panel" id="demo-panel-el">
+    <button class="demo-toggle-btn" id="demo-toggle-btn-el" aria-label="Canlı Düzenleyiciyi Aç/Kapat">
+      <i class="fa-solid fa-cog fa-spin"></i>
+    </button>
+    
+    <div class="demo-panel-content">
+      <div class="demo-header">
+        <h3><i class="fa-solid fa-sliders"></i> Demo Canlı Düzenleyici</h3>
+        <p>Ustalara sunum yaparken bu paneli kullanarak sitenin içeriğini saniyeler içinde özelleştirin.</p>
+      </div>
+      
+      <div class="demo-body">
+        
+        <!-- Tabs -->
+        <div class="demo-tabs">
+          <button class="demo-tab-btn active" data-tab="tab-settings">Ayarlar</button>
+          <button class="demo-tab-btn" data-tab="tab-tips">Satış Taktikleri</button>
+        </div>
+        
+        <div class="demo-tab-content active" id="tab-settings">
+          <!-- 1. Sektör Seçimi -->
+          <div class="demo-control-group">
+            <label class="control-label"><i class="fa-solid fa-briefcase"></i> Meslek / Sektör Şablonu</label>
+            <div class="radio-tiles">
+              <label class="radio-tile-label">
+                <input type="radio" name="sector-select" value="seramik" checked>
+                <div class="tile-icon"><i class="fa-solid fa-bath"></i></div>
+                <div class="tile-text">Seramik</div>
+              </label>
+              <label class="radio-tile-label">
+                <input type="radio" name="sector-select" value="insaat">
+                <div class="tile-icon"><i class="fa-solid fa-hammer"></i></div>
+                <div class="tile-text">İnşaat</div>
+              </label>
+              <label class="radio-tile-label">
+                <input type="radio" name="sector-select" value="boya">
+                <div class="tile-icon"><i class="fa-solid fa-paint-roller"></i></div>
+                <div class="tile-text">Boya</div>
+              </label>
+              <label class="radio-tile-label">
+                <input type="radio" name="sector-select" value="elektrik">
+                <div class="tile-icon"><i class="fa-solid fa-bolt"></i></div>
+                <div class="tile-text">Elektrik</div>
+              </label>
+              <label class="radio-tile-label">
+                <input type="radio" name="sector-select" value="tesisat">
+                <div class="tile-icon"><i class="fa-solid fa-wrench"></i></div>
+                <div class="tile-text">Tesisat</div>
+              </label>
+            </div>
+          </div>
+
+          <!-- 2. İsim Soyisim -->
+          <div class="demo-control-group">
+            <label for="edit-name" class="control-label"><i class="fa-solid fa-user"></i> Usta Adı ve Soyadı</label>
+            <div class="input-row">
+              <input type="text" id="edit-name" class="demo-input" value="Murat">
+              <input type="text" id="edit-surname" class="demo-input" value="Yılmaz">
+            </div>
+          </div>
+
+          <!-- 3. Slogan -->
+          <div class="demo-control-group">
+            <label for="edit-slogan" class="control-label"><i class="fa-solid fa-comment-dots"></i> Hero Sloganı</label>
+            <textarea id="edit-slogan" class="demo-input" rows="2">Milimetrik İşçilik, Kusursuz Zeminler</textarea>
+          </div>
+
+          <!-- 4. İletişim Bilgileri -->
+          <div class="demo-control-group">
+            <label for="edit-phone" class="control-label"><i class="fa-solid fa-phone"></i> Telefon Numarası</label>
+            <input type="text" id="edit-phone" class="demo-input" value="0532 123 45 67">
+          </div>
+          
+          <div class="demo-control-group">
+            <label for="edit-whatsapp" class="control-label"><i class="fa-brands fa-whatsapp"></i> WhatsApp No (Uluslararası format)</label>
+            <input type="text" id="edit-whatsapp" class="demo-input" value="905321234567" placeholder="905321234567">
+          </div>
+
+          <!-- 5. Renk Teması -->
+          <div class="demo-control-group">
+            <label class="control-label"><i class="fa-solid fa-palette"></i> Tema Rengi Özelleştir</label>
+            <div class="color-palette-options">
+              <button class="color-swatch-btn" data-color="#0284c7" style="background-color: #0284c7;" title="Gökyüzü Mavi"></button>
+              <button class="color-swatch-btn" data-color="#d97706" style="background-color: #d97706;" title="İnşaat Altın"></button>
+              <button class="color-swatch-btn" data-color="#10b981" style="background-color: #10b981;" title="Zümrüt Yeşil"></button>
+              <button class="color-swatch-btn" data-color="#ef4444" style="background-color: #ef4444;" title="Elektrik Kırmızı"></button>
+              <button class="color-swatch-btn" data-color="#0d9488" style="background-color: #0d9488;" title="Tesisat Turkuaz"></button>
+              <div class="custom-color-picker-wrapper">
+                <input type="color" id="edit-color-picker" value="#0284c7">
+                <i class="fa-solid fa-eye-dropper"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6. Yazı Tipi -->
+          <div class="demo-control-group">
+            <label for="edit-font" class="control-label"><i class="fa-solid fa-font"></i> Yazı Tipi (Font)</label>
+            <select id="edit-font" class="demo-input">
+              <option value="'Outfit', sans-serif">Outfit (Modern / Premium)</option>
+              <option value="'Inter', sans-serif">Inter (Temiz / Profesyonel)</option>
+              <option value="system-ui, -apple-system, sans-serif">Sistem Fontu</option>
+            </select>
+          </div>
+
+          <!-- 7. Tema Switcher -->
+          <div class="demo-control-group">
+            <label class="control-label"><i class="fa-solid fa-moon"></i> Arayüz Teması</label>
+            <div class="theme-switch-wrapper">
+              <button id="theme-dark-btn" class="theme-select-btn active"><i class="fa-solid fa-moon"></i> Koyu Tema</button>
+              <button id="theme-light-btn" class="theme-select-btn"><i class="fa-solid fa-sun"></i> Açık Tema</button>
+            </div>
+          </div>
+          
+        </div>
+        
+        <div class="demo-tab-content" id="tab-tips">
+          <div class="pitch-guide">
+            <h4><i class="fa-solid fa-fire text-warning"></i> Ustaya Satış Yapma Taktikleri</h4>
+            <ol>
+              <li>
+                <strong>Kişiselleştirme Şoku:</strong> 
+                Ustanın yanına gitmeden önce veya sohbet esnasında adını, soyadını ve telefon numarasını hemen bu panelden girin. Siteyi ona gösterin. Kendi adını o şık tasarımla gördüğünde heyecanlanacaktır.
+              </li>
+              <li>
+                <strong>Canlı Meslek Seçimi:</strong> 
+                Usta hangi işi yapıyorsa (örn: Seramik veya Boya) tek tıkla şablonu değiştirin. Sitedeki tüm görseller, hizmetler ve başlıklar saniyeler içinde o mesleğe uygun hale gelecektir.
+              </li>
+              <li>
+                <strong>İnteraktif Özellikleri Gösterin:</strong> 
+                Özellikle <em>Öncesi/Sonrası kaydırıcısını</em> ve <em>Teklif Hesaplayıcısını</em> ustanın gözü önünde kaydırıp kullanın. "Bu özellikler hiçbir ustada yok, müşterileriniz bayılacak" deyin.
+              </li>
+              <li>
+                <strong>WhatsApp Entegrasyonu:</strong> 
+                Hesaplama aracından bir fiyat hesaplayın ve "Teklifi WhatsApp'la Gönder" butonuna basın. Kendi telefonuna giden o şık teklif mesajını gördüğünde projenin faydasını hemen anlayacaktır.
+              </li>
+              <li>
+                <strong>Fiyatlandırma & Paket:</strong> 
+                "Sizi Google Haritalar'a ekleyeceğim ve bu profesyonel siteyi 1 yılda sadece X bin TL'ye size kuracağım" diyerek yıllık alan adı + hosting paketiyle satışı bağlayın.
+              </li>
+            </ol>
+            <div class="pitch-note">
+              <p>💡 <em>İpucu: Gerçek yayına alırken bu ayar çarkını kodlardan kaldırmak için <code>style.css</code> içindeki <code>.demo-panel</code> stilini <code>display: none;</code> yapabilirsiniz.</em></p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      
+      <div class="demo-footer">
+        <button id="demo-close-btn" class="btn btn-secondary btn-sm">Paneli Gizle</button>
+        <span class="version-tag">UstaBul Demo v1.0</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="data-templates.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
