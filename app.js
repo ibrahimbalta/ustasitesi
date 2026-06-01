@@ -129,9 +129,9 @@ document.addEventListener("DOMContentLoaded", () => {
     heroExperience.textContent = template.experience;
     heroRatingVal.textContent = template.rating;
     
-    // Avatar Images mapping based on sector
-    heroAvatar.src = `assets/${template.id}-avatar.jpg`;
-    aboutImg.src = `assets/${template.id}-about.jpg`;
+    // Avatar Images mapping based on sector or custom CMS fields
+    heroAvatar.src = template.avatar || `assets/${template.id}-avatar.jpg`;
+    aboutImg.src = template.aboutImage || `assets/${template.id}-about.jpg`;
     
     // Stats
     statExp.textContent = `${template.experience}+`;
@@ -740,13 +740,19 @@ document.addEventListener("DOMContentLoaded", () => {
       if (customProfile.services) {
         mergedTemplate.services = customProfile.services;
       }
-      if (!mergedTemplate.beforeAfter) {
+      if (customProfile.beforeAfter) {
+        mergedTemplate.beforeAfter = customProfile.beforeAfter;
+      } else {
         mergedTemplate.beforeAfter = baseTemplate.beforeAfter;
       }
-      if (!mergedTemplate.gallery) {
+      if (customProfile.gallery) {
+        mergedTemplate.gallery = customProfile.gallery;
+      } else {
         mergedTemplate.gallery = baseTemplate.gallery;
       }
-      if (!mergedTemplate.testimonials) {
+      if (customProfile.testimonials) {
+        mergedTemplate.testimonials = customProfile.testimonials;
+      } else {
         mergedTemplate.testimonials = baseTemplate.testimonials;
       }
       

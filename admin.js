@@ -173,6 +173,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const profAbout = document.getElementById("prof-about");
   const profExp = document.getElementById("prof-exp");
   const profProjects = document.getElementById("prof-projects");
+  const profRating = document.getElementById("prof-rating");
+  const profAvatar = document.getElementById("prof-avatar");
+  const profAboutImg = document.getElementById("prof-about-img");
   const profPhone = document.getElementById("prof-phone");
   const profWhatsapp = document.getElementById("prof-whatsapp");
   const profEmail = document.getElementById("prof-email");
@@ -180,6 +183,19 @@ document.addEventListener("DOMContentLoaded", () => {
   
   const servicesContainer = document.getElementById("services-container");
   const btnAddService = document.getElementById("btn-add-service");
+  
+  const baTitle = document.getElementById("ba-title");
+  const baDesc = document.getElementById("ba-desc");
+  const baLabelBefore = document.getElementById("ba-label-before");
+  const baLabelAfter = document.getElementById("ba-label-after");
+  const baImgBefore = document.getElementById("ba-img-before");
+  const baImgAfter = document.getElementById("ba-img-after");
+  
+  const galleryContainer = document.getElementById("gallery-container");
+  const btnAddGallery = document.getElementById("btn-add-gallery");
+  
+  const testimonialsContainer = document.getElementById("testimonials-container");
+  const btnAddTestimonial = document.getElementById("btn-add-testimonial");
   
   const priceUnit = document.getElementById("price-unit");
   const priceBase = document.getElementById("price-base");
@@ -219,6 +235,9 @@ document.addEventListener("DOMContentLoaded", () => {
     profAbout.value = currentProfile.about;
     profExp.value = currentProfile.experience;
     profProjects.value = currentProfile.projects;
+    profRating.value = currentProfile.rating || "4.9";
+    profAvatar.value = currentProfile.avatar || "";
+    profAboutImg.value = currentProfile.aboutImage || "";
     profPhone.value = currentProfile.phone;
     profWhatsapp.value = currentProfile.whatsapp;
     profEmail.value = currentProfile.email;
@@ -226,6 +245,22 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // Services Populate
     renderServicesForm();
+    
+    // Before/After Populate
+    if (currentProfile.beforeAfter) {
+      baTitle.value = currentProfile.beforeAfter.title || "";
+      baDesc.value = currentProfile.beforeAfter.description || "";
+      baLabelBefore.value = currentProfile.beforeAfter.beforeLabel || "";
+      baLabelAfter.value = currentProfile.beforeAfter.afterLabel || "";
+      baImgBefore.value = currentProfile.beforeAfter.before || "";
+      baImgAfter.value = currentProfile.beforeAfter.after || "";
+    }
+    
+    // Gallery Populate
+    renderGalleryForm();
+    
+    // Testimonials Populate
+    renderTestimonialsForm();
     
     // Pricing Calculator Populate
     priceUnit.value = currentProfile.pricing.unitName;
@@ -323,11 +358,132 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // D. Save All Settings Lojiği
+  // D. Portfolyo Galerisi Rendering & Edit Lojiği
+  function renderGalleryForm() {
+    galleryContainer.innerHTML = "";
+    if (!currentProfile.gallery) currentProfile.gallery = [];
+    currentProfile.gallery.forEach((item, idx) => {
+      const card = document.createElement("div");
+      card.className = "admin-service-item";
+      card.innerHTML = `
+        <button class="btn-remove-service btn-remove-gallery" data-index="${idx}" title="Bu projeyi sil">&times;</button>
+        <div class="form-row">
+          <div class="form-group-admin" style="width:100%;">
+            <label>Proje Başlığı</label>
+            <input type="text" class="form-control-admin gal-title-input" value="${item.title}" required>
+          </div>
+          <div class="form-group-admin" style="width:100%;">
+            <label>Kategori</label>
+            <input type="text" class="form-control-admin gal-cat-input" value="${item.category}" placeholder="Örn: Banyo, Mutfak, Dış Mekan" required>
+          </div>
+        </div>
+        <div class="form-group-admin" style="margin-bottom:0;">
+          <label>Görsel URL'si (assets/dosya-adi.jpg veya web linki)</label>
+          <input type="text" class="form-control-admin gal-image-input" value="${item.image}" required>
+        </div>
+      `;
+      galleryContainer.appendChild(card);
+    });
+
+    // Remove buttons listeners
+    galleryContainer.querySelectorAll(".btn-remove-gallery").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const index = parseInt(e.target.getAttribute("data-index"));
+        currentProfile.gallery.splice(index, 1);
+        renderGalleryForm();
+      });
+    });
+  }
+
+  if (btnAddGallery) {
+    btnAddGallery.addEventListener("click", () => {
+      if (!currentProfile.gallery) currentProfile.gallery = [];
+      currentProfile.gallery.push({
+        title: "Yeni Proje Görseli",
+        category: "Genel",
+        image: `assets/${currentProfile.id}-g1.jpg`
+      });
+      renderGalleryForm();
+      galleryContainer.scrollTop = galleryContainer.scrollHeight;
+    });
+  }
+
+  // E. Müşteri Yorumları Rendering & Edit Lojiği
+  function renderTestimonialsForm() {
+    testimonialsContainer.innerHTML = "";
+    if (!currentProfile.testimonials) currentProfile.testimonials = [];
+    currentProfile.testimonials.forEach((testi, idx) => {
+      const card = document.createElement("div");
+      card.className = "admin-service-item";
+      
+      // Build dynamic rating options
+      let ratingOptionsHtml = "";
+      for (let r = 5; r >= 1; r--) {
+        ratingOptionsHtml += `<option value="${r}" ${parseInt(testi.rating) === r ? 'selected' : ''}>${r} Yıldız</option>`;
+      }
+      
+      card.innerHTML = `
+        <button class="btn-remove-service btn-remove-testimonial" data-index="${idx}" title="Bu yorumu sil">&times;</button>
+        <div class="form-row">
+          <div class="form-group-admin" style="width:100%;">
+            <label>Müşteri Adı Soyadı</label>
+            <input type="text" class="form-control-admin testi-name-input" value="${testi.name}" required>
+          </div>
+          <div class="form-group-admin" style="width:100%;">
+            <label>Müşteri Konumu (İlçe, İl)</label>
+            <input type="text" class="form-control-admin testi-loc-input" value="${testi.location}" placeholder="Örn: Kadıköy, İstanbul" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group-admin" style="width:100%;">
+            <label>Yıldız Puanı</label>
+            <select class="form-control-admin testi-rating-select" style="background-color: #0f172a; border-radius: var(--border-radius-sm); border: 1px solid rgba(255, 255, 255, 0.1);">
+              ${ratingOptionsHtml}
+            </select>
+          </div>
+          <div class="form-group-admin" style="width:100%;">
+            <label>Tarih/Süre</label>
+            <input type="text" class="form-control-admin testi-date-input" value="${testi.date || '1 hafta önce'}" placeholder="Örn: Dün veya 3 ay önce" required>
+          </div>
+        </div>
+        <div class="form-group-admin" style="margin-bottom:0;">
+          <label>Müşteri Yorumu</label>
+          <textarea class="form-control-admin testi-comment-input" rows="2" required>${testi.comment}</textarea>
+        </div>
+      `;
+      testimonialsContainer.appendChild(card);
+    });
+
+    // Remove buttons listeners
+    testimonialsContainer.querySelectorAll(".btn-remove-testimonial").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const index = parseInt(e.target.getAttribute("data-index"));
+        currentProfile.testimonials.splice(index, 1);
+        renderTestimonialsForm();
+      });
+    });
+  }
+
+  if (btnAddTestimonial) {
+    btnAddTestimonial.addEventListener("click", () => {
+      if (!currentProfile.testimonials) currentProfile.testimonials = [];
+      currentProfile.testimonials.push({
+        name: "Yeni Müşteri",
+        location: "İstanbul",
+        comment: "Yapılan işçilikten son derece memnun kaldık, çok teşekkürler.",
+        rating: 5,
+        date: "Dün"
+      });
+      renderTestimonialsForm();
+      testimonialsContainer.scrollTop = testimonialsContainer.scrollHeight;
+    });
+  }
+
+  // F. Save All Settings Lojiği
   if (btnSaveAll) {
     btnSaveAll.addEventListener("click", () => {
       // Validate Profil tab fields
-      if (!profName.value.trim() || !profSurname.value.trim() || !profTitle.value.trim() || !profPhone.value.trim()) {
+      if (!profName.value.trim() || !profSurname.value.trim() || !profTitle.value.trim() || !profPhone.value.trim() || !profRating.value.trim()) {
         showFeedback(false, "Lütfen profil kısmındaki zorunlu alanları doldurun.");
         return;
       }
@@ -340,6 +496,9 @@ document.addEventListener("DOMContentLoaded", () => {
       currentProfile.about = profAbout.value.trim();
       currentProfile.experience = profExp.value;
       currentProfile.projects = profProjects.value.trim();
+      currentProfile.rating = profRating.value.trim();
+      currentProfile.avatar = profAvatar.value.trim();
+      currentProfile.aboutImage = profAboutImg.value.trim();
       currentProfile.phone = profPhone.value.trim();
       currentProfile.whatsapp = profWhatsapp.value.trim();
       currentProfile.email = profEmail.value.trim();
@@ -366,6 +525,56 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
       currentProfile.services = updatedServices;
+
+      // Read Before/After info
+      currentProfile.beforeAfter = {
+        title: baTitle.value.trim(),
+        description: baDesc.value.trim(),
+        before: baImgBefore.value.trim(),
+        after: baImgAfter.value.trim(),
+        beforeLabel: baLabelBefore.value.trim(),
+        afterLabel: baLabelAfter.value.trim()
+      };
+
+      // Read Gallery
+      const galleryItems = galleryContainer.querySelectorAll(".admin-service-item");
+      const updatedGallery = [];
+      let galleryValidationError = false;
+      galleryItems.forEach(item => {
+        const title = item.querySelector(".gal-title-input").value.trim();
+        const category = item.querySelector(".gal-cat-input").value.trim();
+        const image = item.querySelector(".gal-image-input").value.trim();
+        if (!title || !category || !image) {
+          galleryValidationError = true;
+        }
+        updatedGallery.push({ title, category, image });
+      });
+      if (galleryValidationError) {
+        showFeedback(false, "Lütfen portfolyo galerisindeki boş alanları doldurun.");
+        return;
+      }
+      currentProfile.gallery = updatedGallery;
+
+      // Read Testimonials
+      const testimonialItems = testimonialsContainer.querySelectorAll(".admin-service-item");
+      const updatedTestimonials = [];
+      let testimonialValidationError = false;
+      testimonialItems.forEach(item => {
+        const name = item.querySelector(".testi-name-input").value.trim();
+        const location = item.querySelector(".testi-loc-input").value.trim();
+        const rating = parseInt(item.querySelector(".testi-rating-select").value);
+        const date = item.querySelector(".testi-date-input").value.trim();
+        const comment = item.querySelector(".testi-comment-input").value.trim();
+        if (!name || !location || !comment || !date) {
+          testimonialValidationError = true;
+        }
+        updatedTestimonials.push({ name, location, comment, rating, date });
+      });
+      if (testimonialValidationError) {
+        showFeedback(false, "Lütfen müşteri yorumlarındaki boş alanları doldurun.");
+        return;
+      }
+      currentProfile.testimonials = updatedTestimonials;
 
       // Read Calculator Base info
       currentProfile.pricing.unitName = priceUnit.value.trim();

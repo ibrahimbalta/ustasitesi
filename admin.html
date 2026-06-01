@@ -94,6 +94,21 @@
               </button>
             </li>
             <li>
+              <button class="admin-menu-btn" data-target="sec-beforeafter">
+                <i class="fa-solid fa-images"></i> Öncesi / Sonrası
+              </button>
+            </li>
+            <li>
+              <button class="admin-menu-btn" data-target="sec-gallery">
+                <i class="fa-solid fa-photo-film"></i> Portfolyo Galerisi
+              </button>
+            </li>
+            <li>
+              <button class="admin-menu-btn" data-target="sec-testimonials">
+                <i class="fa-solid fa-comments"></i> Müşteri Yorumları
+              </button>
+            </li>
+            <li>
               <button class="admin-menu-btn" data-target="sec-pricing">
                 <i class="fa-solid fa-tags"></i> Fiyat Hesaplayıcı
               </button>
@@ -147,7 +162,7 @@
               <textarea id="prof-about" class="form-control-admin" rows="5" placeholder="Deneyimleriniz ve iş felsefeniz..." required></textarea>
             </div>
 
-            <div class="form-row">
+            <div class="form-row" style="grid-template-columns: 1fr 1fr 1fr;">
               <div class="form-group-admin" style="width:100%;">
                 <label for="prof-exp">Tecrübe Yılı</label>
                 <input type="number" id="prof-exp" class="form-control-admin" value="10" required>
@@ -155,6 +170,21 @@
               <div class="form-group-admin" style="width:100%;">
                 <label for="prof-projects">Bitirilen Proje Sayısı</label>
                 <input type="text" id="prof-projects" class="form-control-admin" placeholder="Örn: 250+" required>
+              </div>
+              <div class="form-group-admin" style="width:100%;">
+                <label for="prof-rating">Usta Puanı (Rating)</label>
+                <input type="text" id="prof-rating" class="form-control-admin" placeholder="Örn: 4.9" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group-admin" style="width:100%;">
+                <label for="prof-avatar">Profil Fotoğrafı URL'si</label>
+                <input type="text" id="prof-avatar" class="form-control-admin" placeholder="Örn: assets/seramik-avatar.jpg (veya web bağlantısı)">
+              </div>
+              <div class="form-group-admin" style="width:100%;">
+                <label for="prof-about-img">Hakkımda Görseli URL'si</label>
+                <input type="text" id="prof-about-img" class="form-control-admin" placeholder="Örn: assets/seramik-about.jpg (veya web bağlantısı)">
               </div>
             </div>
 
@@ -192,6 +222,72 @@
             </div>
             
             <div class="admin-service-list" id="services-container">
+              <!-- Dynamically populated from JS -->
+            </div>
+          </div>
+
+          <!-- Section 3: Öncesi / Sonrası Proje Yönetimi -->
+          <div class="admin-section" id="sec-beforeafter">
+            <h3>Öncesi / Sonrası Proje Detayları</h3>
+            
+            <div class="form-row">
+              <div class="form-group-admin" style="width:100%;">
+                <label for="ba-title">Proje Başlığı</label>
+                <input type="text" id="ba-title" class="form-control-admin" placeholder="Örn: Banyo Yenileme Projesi" required>
+              </div>
+              <div class="form-group-admin" style="width:100%;">
+                <label for="ba-desc">Proje Açıklaması</label>
+                <input type="text" id="ba-desc" class="form-control-admin" placeholder="Örn: 20 yıllık banyonun sökülerek yenilenmesi..." required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group-admin" style="width:100%;">
+                <label for="ba-label-before">Öncesi Etiketi</label>
+                <input type="text" id="ba-label-before" class="form-control-admin" placeholder="Örn: Eski Hali" required>
+              </div>
+              <div class="form-group-admin" style="width:100%;">
+                <label for="ba-label-after">Sonrası Etiketi</label>
+                <input type="text" id="ba-label-after" class="form-control-admin" placeholder="Örn: Murat Usta Dokunuşu" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group-admin" style="width:100%;">
+                <label for="ba-img-before">Öncesi Görseli URL'si</label>
+                <input type="text" id="ba-img-before" class="form-control-admin" placeholder="Örn: assets/seramik-before.jpg" required>
+              </div>
+              <div class="form-group-admin" style="width:100%;">
+                <label for="ba-img-after">Sonrası Görseli URL'si</label>
+                <input type="text" id="ba-img-after" class="form-control-admin" placeholder="Örn: assets/seramik-after.jpg" required>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 4: Portfolyo Galerisi Yönetimi -->
+          <div class="admin-section" id="sec-gallery">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 24px;">
+              <h3 style="margin:0; border:none; padding:0;">Tamamlanan İşler (Portfolyo)</h3>
+              <button id="btn-add-gallery" class="btn btn-primary btn-sm">
+                <i class="fa-solid fa-plus"></i> Yeni Görsel Ekle
+              </button>
+            </div>
+            
+            <div class="admin-service-list" id="gallery-container">
+              <!-- Dynamically populated from JS -->
+            </div>
+          </div>
+
+          <!-- Section 5: Müşteri Yorumları Yönetimi -->
+          <div class="admin-section" id="sec-testimonials">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 24px;">
+              <h3 style="margin:0; border:none; padding:0;">Müşteri Referansları (Yorumlar)</h3>
+              <button id="btn-add-testimonial" class="btn btn-primary btn-sm">
+                <i class="fa-solid fa-plus"></i> Yeni Yorum Ekle
+              </button>
+            </div>
+            
+            <div class="admin-service-list" id="testimonials-container">
               <!-- Dynamically populated from JS -->
             </div>
           </div>
