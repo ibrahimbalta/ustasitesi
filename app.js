@@ -717,7 +717,48 @@ document.addEventListener("DOMContentLoaded", () => {
   // ==========================================================================
   // 7. BOOTSTRAP INITIALIZATION
   // ==========================================================================
-  renderTemplate(USTA_TEMPLATES.seramik);
+  
+  // Check if the admin panel has saved a custom profile in localStorage
+  const savedProfile = localStorage.getItem("usta_custom_profile");
+  
+  if (savedProfile) {
+    // Admin panel verileri varsa, onları yükle
+    try {
+      const customProfile = JSON.parse(savedProfile);
+      
+      // Merge custom profile onto a base template so missing fields (gallery, beforeAfter, testimonials, etc.) are filled
+      const baseTemplate = USTA_TEMPLATES[customProfile.id] || USTA_TEMPLATES.seramik;
+      const mergedTemplate = Object.assign({}, baseTemplate, customProfile);
+      
+      // Ensure nested objects are properly merged
+      if (customProfile.pricing) {
+        mergedTemplate.pricing = Object.assign({}, baseTemplate.pricing, customProfile.pricing);
+        if (customProfile.pricing.options) {
+          mergedTemplate.pricing.options = customProfile.pricing.options;
+        }
+      }
+      if (customProfile.services) {
+        mergedTemplate.services = customProfile.services;
+      }
+      if (!mergedTemplate.beforeAfter) {
+        mergedTemplate.beforeAfter = baseTemplate.beforeAfter;
+      }
+      if (!mergedTemplate.gallery) {
+        mergedTemplate.gallery = baseTemplate.gallery;
+      }
+      if (!mergedTemplate.testimonials) {
+        mergedTemplate.testimonials = baseTemplate.testimonials;
+      }
+      
+      renderTemplate(mergedTemplate);
+    } catch (e) {
+      // JSON parse hatası varsa varsayılana dön
+      renderTemplate(USTA_TEMPLATES.seramik);
+    }
+  } else {
+    // Varsayılan şablon
+    renderTemplate(USTA_TEMPLATES.seramik);
+  }
   
   // Set up initial positions for images
   setTimeout(() => {
@@ -725,3 +766,4 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 300);
 
 });
+

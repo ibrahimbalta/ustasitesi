@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UstaBul | Web Sitesi Yönetim Paneli</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="admin-body dark-theme">
+
+  <!-- LOGIN CONTAINER -->
+  <div class="login-wrapper" id="login-screen">
+    <div class="login-card">
+      <div class="badge">
+        <i class="fa-solid fa-lock"></i> Güvenli Giriş
+      </div>
+      <h2 style="margin-top: 15px;">Usta Yönetim Paneli</h2>
+      <p>Lütfen web sitenizi düzenlemek için şifrenizi girin.</p>
+      
+      <div class="admin-alert danger" id="login-error-alert">Hatalı şifre girdiniz!</div>
+      
+      <form id="login-form" onsubmit="event.preventDefault();">
+        <div class="form-group-admin" style="text-align: left;">
+          <label for="admin-password">Yönetici Şifresi</label>
+          <input type="password" id="admin-password" class="form-control-admin" placeholder="••••••••" required>
+          <span style="font-size: 0.75rem; color: #94a3b8; margin-top: 8px; display: block;">Varsayılan demo şifresi: <strong>admin123</strong></span>
+        </div>
+        
+        <button type="submit" id="btn-login" class="btn btn-primary btn-block btn-lg" style="margin-top: 24px;">
+          <i class="fa-solid fa-arrow-right-to-bracket"></i> Giriş Yap
+        </button>
+      </form>
+      
+      <div style="margin-top: 30px;">
+        <a href="index.html" style="font-size: 0.9rem; color: #3b82f6;"><i class="fa-solid fa-arrow-left"></i> Siteye Geri Dön</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- DASHBOARD CONTAINER (Hidden by default) -->
+  <div id="dashboard-screen" style="display: none; flex-direction: column; min-height: 100vh;">
+    
+    <!-- Navbar -->
+    <header class="admin-navbar">
+      <div class="admin-nav-container">
+        <div class="admin-logo">
+          <i class="fa-solid fa-screwdriver-wrench"></i>
+          <span>UstaBul Yönetim Paneli</span>
+        </div>
+        <div style="display: flex; gap: 16px; align-items: center;">
+          <span id="active-master-indicator" style="font-size: 0.9rem; color: #94a3b8; font-weight: 500;">Murat Usta</span>
+          <button id="btn-logout" class="btn btn-secondary btn-sm" style="background-color: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.2); color: #ef4444;">
+            <i class="fa-solid fa-sign-out-alt"></i> Çıkış Yap
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main -->
+    <main class="admin-main">
+      <div class="dashboard-grid">
+        
+        <!-- Sidebar Menu -->
+        <aside class="admin-sidebar">
+          <ul class="admin-menu-list">
+            <li>
+              <button class="admin-menu-btn active" data-target="sec-profile">
+                <i class="fa-solid fa-user-cog"></i> Profil Bilgileri
+              </button>
+            </li>
+            <li>
+              <button class="admin-menu-btn" data-target="sec-services">
+                <i class="fa-solid fa-hand-holding-hand"></i> Hizmetlerim
+              </button>
+            </li>
+            <li>
+              <button class="admin-menu-btn" data-target="sec-pricing">
+                <i class="fa-solid fa-tags"></i> Fiyat Hesaplayıcı
+              </button>
+            </li>
+            <li>
+              <button class="admin-menu-btn" data-target="sec-password">
+                <i class="fa-solid fa-key"></i> Şifre Değiştir
+              </button>
+            </li>
+            <li style="margin-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 20px;">
+              <a href="index.html" class="admin-menu-btn" style="color: #4ade80;">
+                <i class="fa-solid fa-globe"></i> Web Sitemi Aç
+              </a>
+            </li>
+          </ul>
+        </aside>
+
+        <!-- Content Area -->
+        <section class="admin-content-area">
+          
+          <div class="admin-alert success" id="admin-success-alert">Değişiklikler başarıyla kaydedildi!</div>
+          <div class="admin-alert danger" id="admin-error-alert">Lütfen gerekli tüm alanları doldurun.</div>
+
+          <!-- Section 1: Profil Bilgileri -->
+          <div class="admin-section active" id="sec-profile">
+            <h3>Profil & Genel Bilgiler</h3>
+            
+            <div class="form-row">
+              <div class="form-group-admin col-md-6" style="width:100%;">
+                <label for="prof-name">Adınız</label>
+                <input type="text" id="prof-name" class="form-control-admin" placeholder="Örn: Ahmet" required>
+              </div>
+              <div class="form-group-admin col-md-6" style="width:100%;">
+                <label for="prof-surname">Soyadınız</label>
+                <input type="text" id="prof-surname" class="form-control-admin" placeholder="Örn: Yılmaz" required>
+              </div>
+            </div>
+
+            <div class="form-group-admin">
+              <label for="prof-title">Unvan / Sektör Uzmanlığı</label>
+              <input type="text" id="prof-title" class="form-control-admin" placeholder="Örn: Seramik & Fayans Uzmanı" required>
+            </div>
+
+            <div class="form-group-admin">
+              <label for="prof-slogan">Hero / Anasayfa Sloganı</label>
+              <input type="text" id="prof-slogan" class="form-control-admin" placeholder="Örn: Milimetrik İşçilik, Kusursuz Zeminler" required>
+            </div>
+
+            <div class="form-group-admin">
+              <label for="prof-about">Hakkımda Yazısı</label>
+              <textarea id="prof-about" class="form-control-admin" rows="5" placeholder="Deneyimleriniz ve iş felsefeniz..." required></textarea>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group-admin" style="width:100%;">
+                <label for="prof-exp">Tecrübe Yılı</label>
+                <input type="number" id="prof-exp" class="form-control-admin" value="10" required>
+              </div>
+              <div class="form-group-admin" style="width:100%;">
+                <label for="prof-projects">Bitirilen Proje Sayısı</label>
+                <input type="text" id="prof-projects" class="form-control-admin" placeholder="Örn: 250+" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group-admin" style="width:100%;">
+                <label for="prof-phone">Telefon Numarası</label>
+                <input type="text" id="prof-phone" class="form-control-admin" placeholder="Örn: 0532 123 45 67" required>
+              </div>
+              <div class="form-group-admin" style="width:100%;">
+                <label for="prof-whatsapp">WhatsApp Numarası (Uluslararası Format)</label>
+                <input type="text" id="prof-whatsapp" class="form-control-admin" placeholder="Örn: 905321234567" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group-admin" style="width:100%;">
+                <label for="prof-email">E-Posta Adresi</label>
+                <input type="email" id="prof-email" class="form-control-admin" placeholder="Örn: ahmet@usta.com" required>
+              </div>
+              <div class="form-group-admin" style="width:100%;">
+                <label for="prof-areas">Hizmet Verilen Bölgeler</label>
+                <input type="text" id="prof-areas" class="form-control-admin" placeholder="Örn: Tüm İstanbul (Anadolu & Avrupa)" required>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Section 2: Hizmetler Yönetimi -->
+          <div class="admin-section" id="sec-services">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 24px;">
+              <h3 style="margin:0; border:none; padding:0;">Hizmetlerim & Uzmanlıklarım</h3>
+              <button id="btn-add-service" class="btn btn-primary btn-sm">
+                <i class="fa-solid fa-plus"></i> Yeni Hizmet Ekle
+              </button>
+            </div>
+            
+            <div class="admin-service-list" id="services-container">
+              <!-- Dynamically populated from JS -->
+            </div>
+          </div>
+
+          <!-- Section 3: Fiyat Hesaplayıcı Ayarları -->
+          <div class="admin-section" id="sec-pricing">
+            <h3>Fiyat Hesaplama Motoru Ayarları</h3>
+            
+            <div class="form-row">
+              <div class="form-group-admin" style="width:100%;">
+                <label for="price-unit">Hesaplama Ölçü Birimi</label>
+                <input type="text" id="price-unit" class="form-control-admin" placeholder="Örn: Metrekare (m²) veya Adet" required>
+              </div>
+              <div class="form-group-admin" style="width:100%;">
+                <label for="price-base">Taban Birim Fiyatı (TL)</label>
+                <input type="number" id="price-base" class="form-control-admin" placeholder="Örn: 350" required>
+              </div>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; margin: 30px 0 20px 0;">
+              <h4 style="margin:0;">Ek Seçenekler & Fiyatları (Checkboxes)</h4>
+              <button id="btn-add-option" class="btn btn-secondary btn-sm" style="border-color: rgba(59,130,246,0.3); color:#3b82f6;">
+                <i class="fa-solid fa-plus"></i> Ek Seçenek Ekle
+              </button>
+            </div>
+
+            <div class="admin-options-list" id="options-container">
+              <!-- Dynamically populated from JS -->
+            </div>
+          </div>
+
+          <!-- Section 4: Şifre İşlemleri -->
+          <div class="admin-section" id="sec-password">
+            <h3>Yönetici Şifresini Değiştir</h3>
+            
+            <div class="form-group-admin">
+              <label for="pw-current">Mevcut Şifre</label>
+              <input type="password" id="pw-current" class="form-control-admin" placeholder="••••••••">
+            </div>
+
+            <div class="form-group-admin">
+              <label for="pw-new">Yeni Şifre</label>
+              <input type="password" id="pw-new" class="form-control-admin" placeholder="••••••••">
+            </div>
+
+            <div class="form-group-admin">
+              <label for="pw-confirm">Yeni Şifre (Tekrar)</label>
+              <input type="password" id="pw-confirm" class="form-control-admin" placeholder="••••••••">
+            </div>
+          </div>
+
+          <!-- Bottom Action Buttons -->
+          <div class="admin-actions-bar">
+            <button id="btn-save-all" class="btn btn-primary btn-lg">
+              <i class="fa-solid fa-save"></i> Tüm Değişiklikleri Kaydet
+            </button>
+          </div>
+
+        </section>
+
+      </div>
+    </main>
+
+  </div>
+
+  <script src="data-templates.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
