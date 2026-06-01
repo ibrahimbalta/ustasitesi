@@ -6,8 +6,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   
   // Cache credentials baseline
-  if (!localStorage.getItem("admin_password")) {
-    localStorage.setItem("admin_password", "admin123");
+  if (!localStorage.getItem("admin_password") || localStorage.getItem("admin_password") === "admin123") {
+    localStorage.setItem("admin_password", "6032balta");
   }
 
   // --- Dynamic Color Theme Application ---
